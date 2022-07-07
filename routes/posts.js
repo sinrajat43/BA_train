@@ -7,12 +7,23 @@ router.get('/',(req,res)=>{
     res.send('We are at posts');
 });
 
-router.post('/',async (req,res)=>{
+//CREATE operation
+router.post('/create',async (req,res)=>{
     console.log(req.body);
     const response=await Posts.create(req.body);
     console.log(response);
-    res.json({status:'ok'})
+    res.json({status:'ok'});
+    res.json(response);
 });
+
+//READ Operation
+router.get('/read',async (req,res)=>{
+    console.log(req.body);
+    const response=await Posts.find({});
+    console.log(response);
+    res.json(response);
+});
+
 
 router.get('/first',(req,res)=>{
     res.send('This is first post');
