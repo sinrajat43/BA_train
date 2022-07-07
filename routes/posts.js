@@ -24,6 +24,12 @@ router.get('/read',async (req,res)=>{
     res.json(response);
 });
 
+//DELETE Operation
+router.delete('/delete/:PostId',async (req,res)=>{
+    const remPost=await Posts.remove({_id:req.params.PostId})
+    res.json(remPost);
+})
+
 
 router.get('/first',(req,res)=>{
     res.send('This is first post');
