@@ -30,6 +30,15 @@ router.delete('/delete/:PostId',async (req,res)=>{
     res.json(remPost);
 })
 
+//UPDATE Operation
+router.patch('/update/:PostId',async (req,res)=>{
+    const updatedPost= await Posts.updateOne(
+        {_id:req.params.PostId},
+        {$set:{description:req.body.description}}
+    );
+    res.json(updatedPost);
+})
+
 
 router.get('/first',(req,res)=>{
     res.send('This is first post');
